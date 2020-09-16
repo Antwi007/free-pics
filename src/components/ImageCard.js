@@ -75,7 +75,7 @@ class ImageCard extends React.Component {
                         <div className="center">
                             <h2 className="ui inverted header">Interested?</h2>
                             <div className="ui primary button" onClick={(e) => this.onDownloadPress(e)}>Download</div>
-                            <a href={this.props.image.urls.full} target="_blank">
+                            <a href={this.props.image.urls.full} target="_blank" rel="noopener noreferrer">
                                 <div className="ui button">View</div>
                             </a>
                         </div>
