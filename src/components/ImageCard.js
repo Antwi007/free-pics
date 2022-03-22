@@ -1,5 +1,7 @@
 import React from 'react';
 
+const bucketURL = "https://assignment2-kerem-nana-photos.s3.us-east-1.amazonaws.com/"
+
 class ImageCard extends React.Component {
 
     constructor(props) {
@@ -61,7 +63,9 @@ class ImageCard extends React.Component {
     }
 
     render() {
-        const { description, urls } = this.props.image;
+        const imageURL = bucketURL + this.props.image._source.objectKey
+
+        console.log(imageURL)
 
         return (
             <div
@@ -75,13 +79,13 @@ class ImageCard extends React.Component {
                         <div className="center">
                             <h2 className="ui inverted header">Interested?</h2>
                             <div className="ui primary button" onClick={(e) => this.onDownloadPress(e)}>Download</div>
-                            <a href={this.props.image.urls.full} target="_blank" rel="noopener noreferrer">
+                            <a href={imageURL} target="_blank" rel="noopener noreferrer">
                                 <div className="ui button">View</div>
                             </a>
                         </div>
                     </div>
                 </div>
-                <img ref={this.imageRef} alt={description} src={urls.regular} />
+                <img ref={this.imageRef} alt={description} src={imageURL} />
             </div >
         )
     }

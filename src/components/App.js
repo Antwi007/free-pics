@@ -1,9 +1,9 @@
 import React from 'react';
-import unsplash from '../api/unsplash';
 import SearchBar from './SearchBar';
 import ImageList from './ImageList';
 import Header from './Header';
 import Modal from './Modal';
+import amazonCognito from '../api/amazon_cognito';
 
 class App extends React.Component {
     state = { images: [], loading: false, modal: false };
@@ -11,14 +11,17 @@ class App extends React.Component {
     async onSearchSubmit(term) {
         this.setState({ loading: true });
 
-        const response = await unsplash.get('/search/photos', {
+        const response = await amazonCognito.get('/search', {
             params: {
-                query: term
+                    user_message: term
             },
         })
 
+        console.log("got response", response)
+        console.log("more specifically", response.data.unstructured.photos)
+
         this.setState({
-            images: response.data.results,
+            images: response.data.unstructured.photos,
             loading: false
         })
     }
