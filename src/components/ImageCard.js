@@ -65,8 +65,6 @@ class ImageCard extends React.Component {
     render() {
         const imageURL = bucketURL + this.props.image._source.objectKey
 
-        console.log(imageURL)
-
         return (
             <div
                 className="ui image"
@@ -85,7 +83,7 @@ class ImageCard extends React.Component {
                         </div>
                     </div>
                 </div>
-                <img ref={this.imageRef} alt={description} src={imageURL} />
+                <img ref={this.imageRef} alt="placeholder" src={imageURL} />
             </div >
         )
     }

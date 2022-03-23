@@ -17,9 +17,6 @@ class App extends React.Component {
             },
         })
 
-        console.log("got response", response)
-        console.log("more specifically", response.data.unstructured.photos)
-
         this.setState({
             images: response.data.unstructured.photos,
             loading: false
