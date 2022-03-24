@@ -1,0 +1,12 @@
+{
+    "Resources": {
+        "OpenAPI": {
+            "Type": "AWS::ApiGateway::RestApi",
+            "Properties": {
+                "Description": "This is a description",
+                "Name": "TestAPI",
+                "CloneFrom": "q9fue4di88"
+            }
+        }
+    }
+}

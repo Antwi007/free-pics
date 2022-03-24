@@ -30,8 +30,10 @@ class Modal extends React.Component {
     };
 
     onPressSubmit = async () => {
-        let baseURL = "https://q9fue4di88.execute-api.us-east-1.amazonaws.com/dev"
+        let baseURL = "https://hrcot9nu0e.execute-api.us-east-1.amazonaws.com/dev"
             + '/upload/assignment2-kerem-nana-photos/' + this.state.selectedFile.name;
+
+        console.log(this.state.selectedFile.type)
 
         const response = await axios.put(baseURL, this.state.selectedFile, {
             headers: {

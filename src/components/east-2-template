@@ -1,0 +1,51 @@
+{
+    "Resources": {
+        "OSSD1SKH0": {
+            "Type": "AWS::OpenSearchService::Domain",
+            "Properties": {
+                "AccessPolicies": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "AWS": "*"
+                            },
+                            "Action": [
+                                "es:*"
+                            ],
+                            "Resource": "arn:aws:es:us-east-2:395718007070:domain/photos/*"
+                        }
+                    ]
+                },
+                "NodeToNodeEncryptionOptions": {
+                    "Enabled": true
+                },
+                "AdvancedSecurityOptions": {
+                    "Enabled": true,
+                    "InternalUserDatabaseEnabled": true,
+                    "MasterUserOptions": {
+                        "MasterUserName": "KeremNana",
+                        "MasterUserPassword": "KeremNana1!"
+                    }
+                },
+                "EncryptionAtRestOptions": {
+                    "Enabled": Boolean,
+                    "KmsKeyId": String
+                },
+                "DomainName": "photos1",
+                "ClusterConfig": {
+                    "DedicatedMasterEnabled": false,
+                    "InstanceCount": 1,
+                    "InstanceType": "t3.small.search"
+                },
+                "EBSOptions": {
+                    "EBSEnabled": true,
+                    "Iops": 0,
+                    "VolumeSize": 10,
+                    "VolumeType": "gp2"
+                }
+            }
+        }
+    }
+}
