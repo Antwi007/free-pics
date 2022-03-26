@@ -21,7 +21,8 @@ function getBase64(file) {
 class Modal extends React.Component {
 
     state = {
-        selectedFile: null
+        selectedFile: null,
+        customLabels: "",
     };
 
     onFileChange = event => {
@@ -29,18 +30,22 @@ class Modal extends React.Component {
         this.setState({ selectedFile: event.target.files[0] });
     };
 
+    onLabelChange = event => {
+        this.setState({ customLabels: event.target.value });
+    };
+
     onPressSubmit = async () => {
         let baseURL = "https://hrcot9nu0e.execute-api.us-east-1.amazonaws.com/dev"
             + '/upload/assignment2-kerem-nana-photos/' + this.state.selectedFile.name;
 
-        console.log(this.state.selectedFile.type)
 
         const response = await axios.put(baseURL, this.state.selectedFile, {
             headers: {
-                'Content-Type': this.state.selectedFile.type
+                'Content-Type': this.state.selectedFile.type,
+                'x-amz-meta-customLabels': this.state.customLabels,
             }
         })
-
+        
         console.log(response)
         this.props.onPressClose()
 
@@ -57,7 +62,7 @@ class Modal extends React.Component {
                     </div>
                     <div class="modal-field">
                         <div class="field-text"> Tags </div>
-                        <input class="field-value" type="text" name="tags" />
+                        <input class="field-value" type="text" name="tags" onChange={(e) => {this.onLabelChange(e)}}/>
                     </div>
                     <div class="modal-field">
                         <div class="field-text"> Photo </div>
