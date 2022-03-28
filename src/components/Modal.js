@@ -35,7 +35,7 @@ class Modal extends React.Component {
     };
 
     onPressSubmit = async () => {
-        let baseURL = "https://hrcot9nu0e.execute-api.us-east-1.amazonaws.com/dev"
+        let baseURL = "https://qhqe778kf6.execute-api.us-east-1.amazonaws.com/dev"
             + '/upload/assignment2-kerem-nana-photos/' + this.state.selectedFile.name;
 
 
