@@ -35,7 +35,7 @@ const Button = styled.button`
 
 const PostButton = ({onPostClick}) => {
     return (
-        <Button theme="blue" onClick={onPostClick}>
+        <Button theme="pink" onClick={onPostClick}>
             Upload Photo
         </Button>
     )
